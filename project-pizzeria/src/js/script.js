@@ -157,22 +157,26 @@
         const param = thisProduct.data.params[paramId];
         console.log(paramId, param);
 
-        //for every option in this category
+        // for every option in this category
         for (let optionId in param.options) {
           const option = param.options[optionId];
           console.log(optionId, option);
 
-          // sprawdź czy dana opcja optionId (tomato) z danej kategorii paramId (sos) jest wybrana w formularzu formData
+          // check if the option is selected and if it is default
 
-          if (formData.hasOwnProperty(param)) {
-            console.log('!!!');
+          if (formData[paramId] && formData[paramId].includes(optionId)) {
+            console.log(optionId + ' is selected');
+
+            const optionPrice = option.price;
+
+            if (option.hasOwnProperty('default') == false) {
+              price = price + optionPrice;
+            }
+          } else if (option.hasOwnProperty('default') && formData[paramId].includes(optionId) == false) {
+
+            const optionPrice = option.price;
+            price = price - optionPrice;
           }
-
-          // jeżeli tak to odejmij cenę
-
-          // jeżeli nie to dodaj cenę
-
-          // jeżeli była lub nie była, ale jej nie klikałam to nie rób nic
         }
       }
       // update calculated price in HTML
