@@ -44,7 +44,7 @@
     amountWidget: {
       defaultValue: 1,
       defaultMin: 1,
-      defaultMax: 9,
+      defaultMax: 10,
     }
   };
 
@@ -190,6 +190,7 @@
         }
       }
       // update calculated price in HTML
+      price *= thisProduct.amountWidget.value;
       thisProduct.priceElem.innerHTML = price;
     }
 
@@ -197,6 +198,10 @@
       const thisProduct = this;
 
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidget.initActions();
+      thisProduct.amountWidgetElem.addEventListener('update', function () {
+        thisProduct.processOrder();
+      });
     }
   }
 
@@ -204,8 +209,8 @@
     constructor(element) {
       const thisWidget = this;
 
+      thisWidget.value = settings.amountWidget.defaultValue;
       thisWidget.getElements(element);
-      thisWidget.initActions();
       thisWidget.setValue(thisWidget.input.value);
 
       console.log('Amount Widget: ', thisWidget);
@@ -226,11 +231,14 @@
 
       const newValue = parseInt(value);
 
-      if (newValue == !thisWidget.value && !isNaN(newValue)) {
-        thisWidget.value = newValue;
+      if (thisWidget.value !== newValue && !isNaN(newValue)) {
+        if (newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax) {
+          thisWidget.value = newValue;
+        }
       }
       thisWidget.input.value = thisWidget.value;
 
+      thisWidget.announce();
     }
 
     initActions() {
@@ -242,13 +250,22 @@
 
       thisWidget.linkDecrease.addEventListener('click', function (event) {
         event.preventDefault();
-        thisWidget.setValue(thisWidget.value--);
+        let val = thisWidget.value - 1;
+        thisWidget.setValue(val);
       });
 
       thisWidget.linkIncrease.addEventListener('click', function (event) {
         event.preventDefault();
-        thisWidget.setValue(thisWidget.value++);
+        let val = thisWidget.value + 1;
+        thisWidget.setValue(val);
       });
+    }
+
+    announce() {
+      const thisWidget = this;
+
+      const event = new Event('update');
+      thisWidget.element.dispatchEvent(event);
     }
   }
 
