@@ -91,8 +91,6 @@
       thisProduct.initOrderForm();
       thisProduct.initAmountWidget();
       thisProduct.processOrder();
-
-      console.log('new Product:', thisProduct);
     }
 
     renderInMenu() {
@@ -117,7 +115,6 @@
       thisProduct.dom.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       thisProduct.dom.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
       thisProduct.dom.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
-
     }
 
     initAccordion() {
@@ -125,14 +122,12 @@
 
       /* START: add event listener to clickable trigger on event click */
       thisProduct.dom.accordionTrigger.addEventListener('click', function (event) {
-        console.log('clicked');
 
         /* prevent default action for event */
         event.preventDefault();
 
         /* find active product (product that has active class) */
         const activeProduct = document.querySelector(select.all.menuProductsActive);
-        console.log(activeProduct);
 
         /* if there is active product and it's not thisProduct.element, remove class active from it */
         if (activeProduct) {
@@ -141,7 +136,6 @@
             activeProduct.classList.remove(classNames.menuProduct.wrapperActive);
           }
         }
-
         /* toggle active class on thisProduct.element */
         thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
       });
@@ -149,7 +143,6 @@
 
     initOrderForm() {
       const thisProduct = this;
-      console.log('START initOrderForm');
 
       thisProduct.dom.form.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -172,26 +165,21 @@
     processOrder() {
       const thisProduct = this;
       const formData = utils.serializeFormToObject(thisProduct.dom.form);
-      console.log('formData:', formData);
 
       // set price to default price
       let price = thisProduct.data.price;
-      console.log(price);
 
       // for every category (param)...
       for (let paramId in thisProduct.data.params) {
         const param = thisProduct.data.params[paramId];
-        console.log(paramId, param);
 
         // for every option in this category
         for (let optionId in param.options) {
           const option = param.options[optionId];
-          console.log(optionId, option);
 
           // check if the option is selected and if it is default
 
           if (formData[paramId] && formData[paramId].includes(optionId)) {
-            console.log(optionId + ' is selected');
             const optionPrice = option.price;
             if (option.hasOwnProperty('default') == false) {
               price = price + optionPrice;
@@ -289,9 +277,6 @@
       thisWidget.value = settings.amountWidget.defaultValue;
       thisWidget.getElements(element);
       thisWidget.setValue(thisWidget.input.value);
-
-      console.log('Amount Widget: ', thisWidget);
-      console.log('constructor arguments:', element);
     }
 
     getElements(element) {
@@ -354,8 +339,6 @@
 
       thisCart.getElements(element);
       thisCart.initActions();
-
-      console.log('new Cart', thisCart);
     }
 
     getElements(element) {
@@ -386,7 +369,32 @@
       thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
       console.log('thisCart.products', thisCart.products);
 
-      console.log('adding product', menuProduct);
+      thisCart.update();
+    }
+
+    update() {
+      const thisCart = this;
+      const deliveryFee = settings.cart.defaultDeliveryFee;
+      let totalNumber = 0;
+      let subtotalPrice = 0;
+
+      for (let product of thisCart.products) {
+        if (product) {
+
+          const amount = product.amount;
+          totalNumber = totalNumber + amount;
+
+          const price = product.price;
+          subtotalPrice = subtotalPrice + price;
+
+          thisCart.totalPrice = subtotalPrice + deliveryFee;
+        }
+      }
+      
+
+      console.log('total number', totalNumber);
+      console.log('subtotalPrice', subtotalPrice);
+      console.log('totalPrice', thisCart.totalPrice);
     }
   }
 
@@ -439,7 +447,6 @@
   const app = {
     initMenu: function () {
       const thisApp = this;
-      console.log('thisApp.data:', thisApp.data);
 
       for (let productData in thisApp.data.products) {
         new Product(productData, thisApp.data.products[productData]);
@@ -461,11 +468,6 @@
 
     init: function () {
       const thisApp = this;
-      console.log('*** App starting ***');
-      console.log('thisApp:', thisApp);
-      console.log('classNames:', classNames);
-      console.log('settings:', settings);
-      console.log('templates:', templates);
 
       thisApp.initData();
       thisApp.initMenu();
