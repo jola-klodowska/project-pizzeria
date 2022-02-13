@@ -62,7 +62,7 @@ class Cart {
 
     thisCart.update();
   }
-debugger;
+
   update() {
     const thisCart = this;
     const deliveryFee = settings.cart.defaultDeliveryFee;
