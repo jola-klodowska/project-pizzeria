@@ -59,6 +59,7 @@ class AmountWidget {
     const event = new CustomEvent('update', {
       bubbles: true
     });
+    
     thisWidget.element.dispatchEvent(event);
   }
 }
