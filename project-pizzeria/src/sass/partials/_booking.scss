@@ -171,8 +171,12 @@
         background: $color-dark;
         opacity: 0.4;
       }
-  
     }
+
+    &.selected {
+      background: #A8EF93;
+    }
+
   }
   
   [data-table="1"] {
@@ -198,3 +202,4 @@
   @include flex(row, flex-start, space-between);
   margin: ($base-size * 4) auto;
 }
+
