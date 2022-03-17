@@ -1,11 +1,113 @@
 .home-wrapper {
-    padding: ($base-size * 3) 0;
+    margin: ($base-size * 3.5) auto;
+    padding: ($base-size * 6) ($base-size * 4);
+    background: $color-light;
+    border-bottom: 1px solid lighten($color-dark, 70%);
+    border-radius: $radius;
 }
 
-.row {
-    padding: ($base-size * 3) 0;
+/* Splash */
+
+.splash {
+    padding-bottom: 100px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.dupa {
-    color: green;
+.splash-box {
+    position: relative;
+    text-align: center;
+    color: #ffff;
+    padding: 7px;
+}
+
+.splash-image {
+    width: 287px;
+    height: 119px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.background-color {
+    background-color: #ff6b6b;
+    width: 600px;
+    height: 119px;
+    border-radius: 10px;
+}
+
+.splash-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+}
+
+.subtitle-transform {
+    display: none;
+    margin-top: 5px;
+}
+
+.splash-box:hover .subtitle-transform {
+    display: inline;
+}
+
+/* Carousel */
+
+.carousel-cell {
+    display: flex;
+    height: 200px;
+    padding-bottom: 10px;
+}
+
+.carousel-text {
+    padding-left: 20px;;
+}
+
+.carousel-image {
+    border-radius: 10px;
+}
+
+/* Gallery */
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 80px;
+    color: red;
+}
+
+.fa-share-alt {
+    color:#ff6b6b;
+    padding-left: 10px;
+}
+
+.gallery-box {
+    position: relative;
+    width: 193px;
+    height: 193px;
+    font-size: 30px;
+}
+
+.gallery-image {
+    width: 193px;
+    height: 193px;
+    object-fit: cover;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.overlay {
+    display: none;;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+
+}
+
+.gallery-box:hover .overlay {
+    display: block;
+    
 }

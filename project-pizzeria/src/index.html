@@ -9,6 +9,7 @@
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="vendor/range-slider.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -248,22 +249,113 @@
   </script>
 
   <script id="template-home-page" type="text/x-handlebars-template">
-    <div class="home-page">
-      <div class="row one"> 
-        <img src="https://i.postimg.cc/d04L5jJL/pizza-1.jpg" alt="pizza">
-        <img src="https://i.postimg.cc/3RNWV0w9/pizza-2.jpg" alt="food-table">
+    <div class="splash-wrapper">
+      <div class="splash">
+        <div class="splash-box">
+          <img class="splash-image" src="https://i.postimg.cc/d04L5jJL/pizza-1.jpg" alt="pizza">
+            <div class="splash-text">
+              <h1 class="splash-title">ORDER ONLINE</h1>
+              <p class="splash-subtitle subtitle-transform">Delicious food delivered to your door</p>
+            </div>
+        </div>
+        <div class="splash-box">
+        <img class="splash-image" src="https://i.postimg.cc/3RNWV0w9/pizza-2.jpg" alt="table">
+          <div class="splash-text">
+            <h1 class="splash-title">BOOK A TABLE</h1>
+            <p class="splash-subtitle subtitle-transform">You can book a table on the website</p>
+          </div>
+        </div>
+        <div class="splash-box background-color">
+        <h1 class="splash-title">OPENING HOURS</h1>
+        <p class="splash-subtitle">MON-SUN, 12PM - 11AM</p>
+        </div>
       </div>
-      <div class="row two">
-        <h1 class="dupa">ELO!</h1>
+      <div class="carousel">
+        <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true }'>
+          <div class="carousel-cell">
+            <img src="https://i.postimg.cc/tTc7jRZb/pizza-3.jpg" alt="girl" class="carousel-image">
+            <div class="carousel-text">
+              <h3>AMAZING SERVICE!</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              <p> - Margaret Osborne</p>
+            </div>
+          </div>
+          <div class="carousel-cell">
+            <img src="https://i.postimg.cc/tTc7jRZb/pizza-3.jpg" alt="girl" class="carousel-image">
+            <div class="carousel-text">
+              <h3>GOOD SNACKS!</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              <p> - Margaret Osborne</p>
+            </div>
+          </div>
+          <div class="carousel-cell">
+            <img src="https://i.postimg.cc/tTc7jRZb/pizza-3.jpg" alt="girl" class="carousel-image">
+            <div class="carousel-text">
+              <h3>DELICIOUS FOOD!</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              <p> - Margaret Osborne</p>
+            </div>
+          </div>
+          <div class="carousel-cell">
+            <img src="https://i.postimg.cc/tTc7jRZb/pizza-3.jpg" alt="girl" class="carousel-image">
+            <div class="carousel-text">
+              <h3>GREAT VENUE!</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              <p> - Margaret Osborne</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="row three">
-        
+      <div class="gallery">
+        <div class="gallery-box">
+          <img src="https://i.postimg.cc/w38v1WQb/pizza-4.jpg" alt="photo1" class="gallery-image">
+          <div class="overlay">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-share-alt"></i>
+          </div>
+        </div>
+        <div class="gallery-box">
+          <img src="https://i.postimg.cc/BZdc54hR/pizza-5.jpg" alt="photo2" class="gallery-image">
+          <div class="overlay">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-share-alt"></i>
+          </div>
+        </div>
+        <div class="gallery-box">
+          <img src="https://i.postimg.cc/dtrR4pp3/pizza-6.jpg" alt="photo3" class="gallery-image">
+          <div class="overlay">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-share-alt"></i>
+          </div>
+        </div>
+        <div class="gallery-box">
+          <img src="https://i.postimg.cc/2yBy8phZ/pizza-7.jpg" alt="photo4" class="gallery-image">
+          <div class="overlay">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-share-alt"></i>
+          </div>
+        </div>
+        <div class="gallery-box">
+          <img src="https://i.postimg.cc/Cx0GtJpN/pizza-8.jpg" alt="photo5" class="gallery-image">
+          <div class="overlay">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-share-alt"></i>
+          </div>
+        </div>
+        <div class="gallery-box">
+          <img src="https://i.postimg.cc/bYG92sRQ/pizza-9.jpg" alt="photo6" class="gallery-image">
+          <div class="overlay">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-share-alt"></i>
+          </div>
+        </div>
       </div>
     </div>
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <script src="vendor/range-slider.min.js"></script>
 
   <script src="js/app.js" type="module"></script>
